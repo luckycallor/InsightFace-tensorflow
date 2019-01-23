@@ -141,7 +141,7 @@ python train_softmax.py --config_path=./configs/config_ms1m_100.yaml
 
 ### Finetune with Softmax
 
-To finetune a pretrained model with your own data, you should prepare a finetune config file like [./configs/config_finetune.yaml], and start training by the following script:
+To finetune a pretrained model with your own data, you should prepare a finetune config file like [./configs/config_finetune.yaml](), and start training by the following script:
 
 ```
 python finetune_softmax.py --config_path=./configs/config_finetune.yaml
