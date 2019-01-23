@@ -18,22 +18,22 @@ The implementation referred to [the official implementation in mxnet](https://gi
 
 ## TODO List
 
-1. Train with softmax [$\checkmark$]
-2. Model evaluation [$\checkmark$]
-3. Finetune with softmax [$\checkmark$]
-4. Get embedding with pretrained model [$\checkmark$]
-5. Train with triplet loss [TODO]
-6. Finetune with triplet loss [TODO]
+1. *Train with softmax [done!]*
+2. *Model evaluation [done!]*
+3. *Finetune with softmax [done!]*
+4. *Get embedding with pretrained model [done!]*
+5. **Train with triplet loss [todo]**
+6. **Finetune with triplet loss [todo]**
 7. Backbones    
-   7.1 ResNet [$\checkmark$]    
-   7.2 ResNeXt [TODO]    
-   7.3 DenseNet [TODO]    
+   7.1 *ResNet [done!]*    
+   7.2 **ResNeXt [todo]**    
+   7.3 **DenseNet [todo]**    
 8. Losses    
-   8.1 Arcface loss [$\checkmark$]    
-   8.2 Cosface loss [TODO]    
-   8.3 Sphereface loss [TODO]    
-   8.4 Triplet loss [TODO]
-9.  Face detection and alignment [TODO]
+   8.1 *Arcface loss [done!]*    
+   8.2 **Cosface loss [todo]**    
+   8.3 **Sphereface loss [todo]**    
+   8.4 **Triplet loss [todo]**
+9.  **Face detection and alignment [todo]**
 
 ## Running Environment
 
@@ -50,10 +50,10 @@ Here we open our pretrained models for easier application of face recognition or
 
 Pretrained models and their accuracies on validation datasets are shown as following:
 
-|config|training steps|lfw|calfw|cplfw|agedb_30|cfp_ff|cfp_fp|vgg2_fp|download|password|
-|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-|[config_ms1m_100]()|k|%|%|%|%|%|%|%|[ms1m_100_k]()|xxxx|
-|[config_ms1m_200]()|k|%|%|%|%|%|%|%|[ms1m_200_k]()|xxxx|
+|config|training steps|lfw|calfw|cplfw|agedb_30|cfp_ff|cfp_fp|vgg2_fp|download|
+|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|[config_ms1m_100]()|k|%|%|%|%|%|%|%|[ms1m_100_k]()|
+|[config_ms1m_200]()|k|%|%|%|%|%|%|%|[ms1m_200_k]()|
 
 ### Model Evaluation
 
@@ -61,14 +61,17 @@ You can evaluate a pretrained model with [evaluate.py]() by specifying the confi
 
 ```
 python evaluate.py 
---config_path=./configs/config_ms1m_100.yaml --model_path=$DIRECTORY_TO_PRETRAINED_MODEL$/best-m-150000
+--config_path=./configs/config_ms1m_100.yaml 
+--model_path=$DIRECTORY_TO_PRETRAINED_MODEL$/best-m-150000
 ```
 
 This will evaluate the pretrained model on validation datasets specified in the config file. If you want to evaluate the model on other validation dataset, you can specify it by --val_data as following:
 
 ```
 python evaluate.py 
---config_path=./configs/config_ms1m_100.yaml --model_path=$DIRECTORY_TO_PRETRAINED_MODEL$/best-m-150000 --val_data=$DIRECTORY_TO_VAL_DATA$/xxx.bin
+--config_path=./configs/config_ms1m_100.yaml 
+--model_path=$DIRECTORY_TO_PRETRAINED_MODEL$/best-m-150000 
+--val_data=$DIRECTORY_TO_VAL_DATA$/xxx.bin
 ```
 
 ### Extract Embedding with Pretrained Model
