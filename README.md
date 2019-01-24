@@ -52,8 +52,8 @@ Pretrained models and their accuracies on validation datasets are shown as follo
 
 |config|steps|lfw|calfw|cplfw|agedb_30|cfp_ff|cfp_fp|vgg2_fp|download|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-|[ms1m_100](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_100.yaml)|334k|99.53%|93.92%|87.85%|94.18%|99.29%|94.73%|93.9%|[ms1m_100_334k]()|
-|[ms1m_200](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_200.yaml)|200k|99.43%|94.40%|88.23%|94.58%|99.29%|94.77%|93.9%|[ms1m_200_200k]()|
+|[ms1m_100](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_100.yaml)|334k|99.53%|93.92%|87.85%|94.18%|99.29%|94.73%|93.9%|[ms1m_100_334k](https://pan.baidu.com/s/1Zr91ZYWTXJDlG63XLqNdzQ)|
+|[ms1m_200](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_200.yaml)|200k|99.43%|94.40%|88.23%|94.58%|99.29%|94.77%|93.9%|[ms1m_200_200k](https://pan.baidu.com/s/1q3kXkhjtclXD-eQgZC5gBA)|
 
 ### Model Evaluation
 
