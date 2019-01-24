@@ -33,7 +33,7 @@ lr_values: [0.004, 0.002, 0.0012, 0.0004]
 
 
 # paths
-pretrained_model: '/data/hhd/InsightFace-tensorflow/output/20190122-101014/checkpoints/ckpt-m-124000'
+pretrained_model: ''
 
 train_data: ['/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface.tfrecord']
 val_data: {'agedb_30': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/agedb_30.bin', 'lfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/lfw.bin', 'cfp_ff': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cfp_ff.bin', 'cfp_fp': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cfp_fp.bin', 'calfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/calfw.bin', 'cplfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cplfw.bin', 'vgg2_fp': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/vgg2_fp.bin'}
