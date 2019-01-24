@@ -1,0 +1,43 @@
+# model params
+backbone_type: resnet_v2_m_50
+loss_type: arcface
+out_type: E
+
+image_size: 112
+embd_size: 512
+class_num: 85742
+
+
+# hyper params
+bn_decay: 0.9
+keep_prob: 0.4
+weight_decay: !!float 5e-4
+logits_scale: 64.0
+logits_margin: 0.5
+momentum: 0.9
+
+
+# run params
+fixed_epoch_num: 1
+val_bn_train: False
+augment_flag: True
+augment_margin: 16
+
+gpu_num: 1
+batch_size: 100
+epoch_num: 20
+step_per_epoch: 100000
+val_freq: 2000
+
+lr_steps: [40000, 60000, 80000]
+lr_values: [0.004, 0.002, 0.0012, 0.0004]
+
+
+# paths
+pretrained_model: ''
+
+train_data: ['/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface.tfrecord']
+val_data: {'agedb_30': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/agedb_30.bin', 'lfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/lfw.bin', 'cfp_ff': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cfp_ff.bin', 'cfp_fp': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cfp_fp.bin', 'calfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/calfw.bin', 'cplfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cplfw.bin', 'vgg2_fp': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/vgg2_fp.bin'}
+
+output_dir: './output'
+
