@@ -50,7 +50,7 @@ Here we open our pretrained models for easier application of face recognition or
 
 Pretrained models and their accuracies on validation datasets are shown as following:
 
-|config|training steps|lfw|calfw|cplfw|agedb_30|cfp_ff|cfp_fp|vgg2_fp|download|
+|config|steps|lfw|calfw|cplfw|agedb_30|cfp_ff|cfp_fp|vgg2_fp|download|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |[config_ms1m_100](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_100.yaml)|334k|99.53%|93.92%|87.85%|94.18%|99.29%|94.73%|93.9%|[ms1m_100_k]()|
 |[config_ms1m_200](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_200.yaml)|200k|99.43%|94.40%|88.23%|94.58%|99.29%|94.77%|93.9%|[ms1m_200_k]()|
