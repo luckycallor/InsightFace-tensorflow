@@ -52,12 +52,12 @@ Pretrained models and their accuracies on validation datasets are shown as follo
 
 |config|training steps|lfw|calfw|cplfw|agedb_30|cfp_ff|cfp_fp|vgg2_fp|download|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-|[config_ms1m_100]()|k|%|%|%|%|%|%|%|[ms1m_100_k]()|
-|[config_ms1m_200]()|k|%|%|%|%|%|%|%|[ms1m_200_k]()|
+|[config_ms1m_100](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_100.yaml)|334k|99.53%|93.92%|87.85%|94.18%|99.29%|94.73%|93.9%|[ms1m_100_k]()|
+|[config_ms1m_200](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_ms1m_200.yaml)|200k|99.43%|94.40%|88.23%|94.58%|99.29%|94.77%|93.9%|[ms1m_200_k]()|
 
 ### Model Evaluation
 
-You can evaluate a pretrained model with [evaluate.py]() by specifying the config path and model path, for example:
+You can evaluate a pretrained model with [evaluate.py](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/evaluate.py) by specifying the config path and model path, for example:
 
 ```
 python evaluate.py 
@@ -76,7 +76,7 @@ python evaluate.py
 
 ### Extract Embedding with Pretrained Model
 
-You can extract embedding from face images with [get_embd.py]() by the following script:
+You can extract embedding from face images with [get_embd.py](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/get_embd.py) by the following script:
 
 ```
 python get_embd.py 
@@ -94,7 +94,7 @@ If you want train your own model from scratch, or finetune pretrained model with
 
 ### Data Prepare
 
-The official InsightFace project open their training data in the [DataZoo](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo). This data is in mxrec format, you can transform it to tfrecord format with [./data/generateTFRecord.py]() by the following script:
+The official InsightFace project open their training data in the [DataZoo](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo). This data is in mxrec format, you can transform it to tfrecord format with [./data/generateTFRecord.py](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/data/generateTFRecord.py) by the following script:
 
 ```
 python generateTFRecord.py 
@@ -133,7 +133,7 @@ read_dir/
 
 ### Train with Softmax
 
-To train your own model with softmax, firstly you should prepare a config file like those in [./configs](). It is recommended to modify one example config file to your own config. Secondly, the following script starts training:
+To train your own model with softmax, firstly you should prepare a config file like those in [./configs](https://github.com/luckycallor/InsightFace-tensorflow/tree/master/configs). It is recommended to modify one example config file to your own config. Secondly, the following script starts training:
 
 ```
 python train_softmax.py --config_path=./configs/config_ms1m_100.yaml
@@ -141,7 +141,7 @@ python train_softmax.py --config_path=./configs/config_ms1m_100.yaml
 
 ### Finetune with Softmax
 
-To finetune a pretrained model with your own data, you should prepare a finetune config file like [./configs/config_finetune.yaml](), and start training by the following script:
+To finetune a pretrained model with your own data, you should prepare a finetune config file like [./configs/config_finetune.yaml](https://github.com/luckycallor/InsightFace-tensorflow/blob/master/configs/config_finetune.yaml), and start training by the following script:
 
 ```
 python finetune_softmax.py --config_path=./configs/config_finetune.yaml
