@@ -28,10 +28,12 @@ def get_args():
 def load_bin(path, image_size):
     print('reading %s' % path)
     bins, issame_list = pickle.load(open(path, 'rb'), encoding='bytes')
-    images = []
-    images_f = []
+    num = len(bins)
+    images = np.zeros(shape=[num, image_size, image_size, 3], dtype=np.float32)
+    images_f = np.zeros(shape=[num, image_size, image_size, 3], dtype=np.float32)
     # m = config['augment_margin']
     # s = int(m/2)
+    cnt = 0
     for bin in bins:
         img = misc.imread(io.BytesIO(bin))
         img = misc.imresize(img, [image_size, image_size])
@@ -39,10 +41,11 @@ def load_bin(path, image_size):
         img_f = np.fliplr(img)
         img = img/127.5-1.0
         img_f = img_f/127.5-1.0
-        images.append(img)
-        images_f.append(img_f)
+        images[cnt] = img
+        images_f[cnt] = img_f
+        cnt += 1
     print('done!')
-    return (np.array(images), np.array(images_f), issame_list)
+    return (images, images_f, issame_list)
 
 
 

@@ -186,8 +186,9 @@ class Trainer:
             tf.global_variables_initializer().run()
             saver_ckpt = tf.train.Saver()
             saver_best = tf.train.Saver()
+            saver_embd = tf.train.Saver(var_list=[v for v in tf.trainable_variables() if 'embd_extractor' in v.name])
             if config['pretrained_model'] != '':
-                saver_ckpt.restore(sess, config['pretrained_model'])
+                saver_embd.restore(sess, config['pretrained_model'])
             summary_writer = tf.summary.FileWriter(self.log_dir, sess.graph)
             start_time = time.time()
             best_acc = 0
