@@ -72,13 +72,13 @@ def run_embds(sess, images, batch_size, image_size, train_mode, embds_ph, image_
     embds = []
     for i in range(batch_num):
         image_batch = images[i*batch_size: (i+1)*batch_size]
-        cur_embd = sess.run(embds_ph, feed_dict={image_ph: image_batch, train_ph_dropout: train, train_ph_bn: True})
+        cur_embd = sess.run(embds_ph, feed_dict={image_ph: image_batch, train_ph_dropout: train, train_ph_bn: train})
         embds += list(cur_embd)
         print('%d/%d' % (i, batch_num), end='\r')
     if left > 0:
         image_batch = np.zeros([batch_size, image_size, image_size, 3])
         image_batch[:left, :, :, :] = images[-left:]
-        cur_embd = sess.run(embds_ph, feed_dict={image_ph: image_batch, train_ph_dropout: train, train_ph_bn: True})
+        cur_embd = sess.run(embds_ph, feed_dict={image_ph: image_batch, train_ph_dropout: train, train_ph_bn: train})
         embds += list(cur_embd)[:left]
     print()
     print('done!')
