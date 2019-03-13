@@ -100,7 +100,7 @@ if __name__ == '__main__':
         with tf.Session(config=tf_config) as sess:
             tf.global_variables_initializer().run()
             print('loading...')
-            saver = tf.train.Saver(var_list=tf.trainable_variables())
+            saver = tf.train.Saver()
             saver.restore(sess, args.model_path)
             print('done!')
 
