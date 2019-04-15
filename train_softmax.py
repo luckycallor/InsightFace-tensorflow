@@ -223,6 +223,7 @@ class Trainer:
                             if acc > best_acc:
                                 saver_best.save(sess, os.path.join(self.model_dir, 'best-m'), global_step=counter)
                                 best_acc = acc
+                            #测试集accuracy
 
                         
 if __name__ == '__main__':
