@@ -17,8 +17,8 @@ def get_args():
 
     parser.add_argument('--mode', type=str, default='build', help='model mode: build')
     parser.add_argument('--config_path', type=str, default='./configs/config_ms1m_100.yaml', help='config path, used when mode is build')
-    parser.add_argument('--model_path', type=str, default='/data/hhd/InsightFace-tensorflow/output/20190116-130753/checkpoints/ckpt-m-116000', help='model path')
-    parser.add_argument('--read_path', type=str, default='', help='path to image file or directory to images')
+    parser.add_argument('--model_path', type=str, default='/Volumes/v2/mlib_data/models/MS1M-ArcFace/ckpt-m-480000', help='model path')
+    parser.add_argument('--read_path', type=str, default='/data/tmp/965/', help='path to image file or directory to images')
     parser.add_argument('--save_path', type=str, default='embds.pkl', help='path to save embds')
     parser.add_argument('--train_mode', type=int, default=0, help='whether set train phase to True when getting embds. zero means False, one means True')
 
@@ -33,18 +33,19 @@ def load_image(path, image_size):
         paths = [path]
     images = []
     images_f = []
-    for path in paths:
-        img = misc.imread(path)
+    for path1 in paths:
+        img = misc.imread(path+path1)
         img = misc.imresize(img, [image_size, image_size])
         # img = img[s:s+image_size, s:s+image_size, :]
-        img_f = np.fliplr(img)
+        # img_f = np.fliplr(img)
         img = img/127.5-1.0
-        img_f = img_f/127.5-1.0
+        # img_f = img_f/127.5-1.0
         images.append(img)
-        images_f.append(img_f)
+        # images_f.append(img_f)
     fns = [os.path.basename(p) for p in paths]
     print('done!')
-    return (np.array(images), np.array(images_f), fns)
+    #np.array(images_f),
+    return (np.array(images),  fns)
 
 
 
@@ -104,12 +105,13 @@ if __name__ == '__main__':
             print('done!')
 
             batch_size = config['batch_size']
-            imgs, imgs_f, fns = load_image(args.read_path, config['image_size'])
+            imgs,  fns = load_image(args.read_path, config['image_size']) #imgs_f,
             print('forward running...')
             embds_arr = run_embds(sess, imgs, batch_size, config['image_size'], args.train_mode, embds, images, train_phase_dropout, train_phase_bn)
-            embds_f_arr = run_embds(sess, imgs_f, batch_size, config['image_size'], args.train_mode, embds, images, train_phase_dropout, train_phase_bn)
-            embds_arr = embds_arr/np.linalg.norm(embds_arr, axis=1, keepdims=True)+embds_f_arr/np.linalg.norm(embds_f_arr, axis=1, keepdims=True)
-            embds_arr = embds_arr/np.linalg.norm(embds_arr, axis=1, keepdims=True)
+            # embds_f_arr = run_embds(sess, imgs_f, batch_size, config['image_size'], args.train_mode, embds, images, train_phase_dropout, train_phase_bn)
+            # embds_arr = embds_arr/np.linalg.norm(embds_arr, axis=1, keepdims=True)+embds_f_arr/np.linalg.norm(embds_f_arr, axis=1, keepdims=True)
+            # embds_arr = embds_arr/np.linalg.norm(embds_arr, axis=1, keepdims=True)
+            print(embds_arr)
             print('done!')
             print('saving...')
             embds_dict = dict(*zip(fns, list(embds_arr)))
