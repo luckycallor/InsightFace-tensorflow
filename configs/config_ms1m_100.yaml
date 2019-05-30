@@ -22,21 +22,21 @@ val_bn_train: False
 augment_flag: True
 augment_margin: 16
 
-gpu_num: 1
-batch_size: 100
+gpu_num: 2
+batch_size: 128
 epoch_num: 20
-step_per_epoch: 100000
-val_freq: 2000
+step_per_epoch: 90000
+val_freq: 10000
 
-lr_steps: [40000, 60000, 80000]
-lr_values: [0.004, 0.002, 0.0012, 0.0004]
+lr_steps: [90000, 180000, 270000 , 540000]
+lr_values: [0.0001, 0.001, 0.0008, 0.0001,0.00005]
 
 
 # paths
-pretrained_model: '/data/hhd/InsightFace-tensorflow/output/20190120-133421/checkpoints/ckpt-m-140000'
-
-train_data: ['/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface.tfrecord']
-val_data: {'agedb_30': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/agedb_30.bin', 'lfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/lfw.bin', 'cfp_ff': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cfp_ff.bin', 'cfp_fp': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cfp_fp.bin', 'calfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/calfw.bin', 'cplfw': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/cplfw.bin', 'vgg2_fp': '/data/hhd/dataset/FaceData/InsightFace/faces_ms1m_arcface/vgg2_fp.bin'}
+pretrained_model: /data/mlib_data/models/arcefaces/config_ms1m_100_334k/best-m-334000
+#/data/scripts/InsightFace-tensorflow/output/20190409-094412/checkpoints/ckpt-m-270000
+train_data: ['hdfs://*:9000/data/mlib_data/tfrecords/MS1M-ArcFace/all.tfrecord']
+val_data: {'lfw': '/data/lfw.bin'}
 
 output_dir: './output'
 

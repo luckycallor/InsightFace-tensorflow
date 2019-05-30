@@ -71,10 +71,11 @@ class Trainer:
         self.train_phase_bn = tf.placeholder(dtype=tf.bool, shape=None, name='train_phase_bn')
         self.global_step = tf.Variable(name='global_step', initial_value=0, trainable=False)
         self.inc_op = tf.assign_add(self.global_step, 1, name='increment_global_step')
-        scale = int(512.0/self.batch_size)
-        lr_steps = [scale*s for s in self.config['lr_steps']]
-        lr_values = [v/scale for v in self.config['lr_values']]
-        # lr_steps = self.config['lr_steps']
+        # scale = int(512.0/self.batch_size)
+        # lr_steps = [scale*s for s in self.config['lr_steps']]
+        # lr_values = [v/scale for v in self.config['lr_values']]
+        lr_values = self.config['lr_values']
+        lr_steps = self.config['lr_steps']
         self.lr = tf.train.piecewise_constant(self.global_step, boundaries=lr_steps, values=lr_values, name='lr_schedule')
 
         cid = ClassificationImageData(img_size=self.image_size, augment_flag=self.config['augment_flag'], augment_margin=self.config['augment_margin'])
@@ -182,7 +183,7 @@ class Trainer:
             start_time = time.time()
             best_acc = 0
             counter = 0
-            if config['pretrained_model'] != '':
+            if config['pretrained_model'] != None:
                 saver_ckpt.restore(sess, config['pretrained_model'])
                 step = int(os.path.basename(config['pretrained_model']).split('.')[0].split('-')[-1])
                 sess.run(tf.assign(self.global_step, step))
@@ -222,11 +223,15 @@ class Trainer:
                             if acc > best_acc:
                                 saver_best.save(sess, os.path.join(self.model_dir, 'best-m'), global_step=counter)
                                 best_acc = acc
+                            #测试集accuracy
 
                         
 if __name__ == '__main__':
     args = parse_args()
     config = yaml.load(open(args.config_path))
+
+    os.environ["CUDA_VISIBLE_DEVICES"] = str(config['CUDA_VISIBLE_DEVICES'])
+
     trainer = Trainer(config)
     trainer.train()
 
